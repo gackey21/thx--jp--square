@@ -15,18 +15,16 @@ function thx_typesetting( $the_content ) {
 
 	//ペアリングをspanしながら結合
 	$the_content = '';
+	$skip_flag   = 0;
 	foreach ( $pairing as $value ) {
-		$str = trim( $value[0] );
+		$str = $value[0];
 		$tag = $value[1];
 
-		if (
-			( '</style>' === $tag )
-			||
-			( '</rt>' === $tag )
-			||
-			( '</li>' === $tag )
-		) {
+		if ( $skip_flag > 0 ) {
 			$the_content .= $str;
+			if ( strpos( $tag, '</' ) !== false ) {
+				$skip_flag--;
+			}
 		} else {
 			$the_content .= preg_replace_callback_array(
 				[
@@ -149,10 +147,20 @@ function thx_typesetting( $the_content ) {
 						return '<span class = "thx_zero_spc">' . $match[0] . '</span>';
 					},
 				],
-				$str
+				trim( $str )
 			);//$the_content .= preg_replace_callback_array()
 		}//else ( '</style>' === $tag )
 		$the_content .= $tag;
+
+		if (
+			( strpos( $tag, '<style ' ) !== false )
+			||
+			( strpos( $tag, '<rt>' ) !== false )
+			||
+			( strpos( $tag, '<li' ) !== false )
+		) {
+			$skip_flag++;
+		}
 	}//foreach ( $pairing as $value )
 
 	//重複するthx_clps_spcを削除
