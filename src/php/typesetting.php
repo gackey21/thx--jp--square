@@ -28,8 +28,7 @@ function thx_typesetting( $the_content ) {
 		) {
 			$the_content .= $str;
 		} else {
-			$the_content
-			.= preg_replace_callback_array(
+			$the_content .= preg_replace_callback_array(
 				[
 					//欧文の検索（ゼロスペースを含む場合は２文字以上）
 					'#' .
