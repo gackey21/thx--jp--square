@@ -1,0 +1,41 @@
+/* 行間の崩れないルビ */
+ruby {
+	position: relative;
+	text-align: center;
+}
+
+.thx_yomi {
+	-webkit-user-select: none;
+	user-select: none;
+	position: absolute;
+	display: inline-flex;
+	justify-content: space-between;
+	top: -0.5em;
+	left: 0.25em;
+	right: 0.25em;
+	line-height: 1em;
+}
+
+.thx_yomi_mono {
+	display: inline-block;
+	transform: scale(0.5);
+	transform-origin-y: top;
+}
+
+.thx_yomi_long {
+	left: 0px;
+	right: 0px;
+}
+
+.thx_yomi span {
+	-webkit-user-select: none;
+	user-select: none;
+	transform: scale(0.5);
+	transform-origin: top left;
+	width: 0.5em;
+}
+
+.thx_quo_spc {
+	-webkit-user-select: none;
+	user-select: none;
+}

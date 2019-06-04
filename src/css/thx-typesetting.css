@@ -1,0 +1,132 @@
+/* 禁則処理と両端揃え*/
+body {
+	line-break: strict;
+	text-align: justify;
+}
+
+/* 全角化 */
+.thx_fwid {
+	font-feature-settings: "fwid";
+}
+
+/* プロポーショナル化 */
+.thx_pwid {
+	font-feature-settings: "pwid";
+}
+
+/* ゼロ幅スペース（&#x200b;、\x{200b}） */
+.thx_zero_spc {
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+/* 和欧間スペース */
+.thx_wao_spc {
+	font-family: Kosugi;
+	font-size: 0.5em;
+	line-height: 0;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+code .thx_wao_spc {
+	display: none;
+}
+
+/* 相殺スペース */
+.thx_clps_spc {
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.chrome .thx_clps_spc {
+	font-family: sans-serif;
+	font-feature-settings: "hwid";
+}
+
+.gecko .thx_clps_spc {
+	font-family: Kosugi;
+	line-height: 0;
+}
+
+.safari .thx_clps_spc {
+	font-family: Kosugi;
+	line-height: 0;
+}
+
+body.amp .thx_clps_spc {
+	font-family: initial;
+}
+
+code .thx_clps_spc {
+	display: none;
+}
+
+/* 句読点 */
+.thx_punc_wrap {
+	position: relative;
+	display: inline-block;
+}
+
+.thx_punc_punc {
+	font-feature-settings: "halt";
+}
+
+.thx_punc_clbr {
+	font-feature-settings: "halt";
+}
+
+.chrome .thx_punc_wrap + .thx_clps_spc {
+	font-feature-settings: "fwid";
+}
+
+.gecko .thx_punc_wrap + .thx_clps_spc {
+	font-size: 2em;
+}
+
+.safari .thx_punc_wrap + .thx_clps_spc {
+	font-size: 2em;
+}
+
+.thx_punctuation {
+	position: absolute;
+	font-feature-settings: "halt";
+	line-height: 1em;
+}
+
+code .thx_punc_wrap .thx_punctuation {
+	position: relative;
+	font-feature-settings: "fwid";
+	bottom: initial;
+}
+
+.chrome .thx_punctuation {
+	bottom: -0.1em;
+}
+
+.gecko .thx_punctuation {
+	bottom: -0.15em;
+}
+
+.safari .thx_punctuation {
+	bottom: -0.15em;
+}
+
+/* 中黒 */
+:not(code)>.thx_mid_dot {
+	font-feature-settings: "halt";
+}
+
+:not(code)>.thx_clps_spc + .thx_mid_dot {
+	margin-left: -0.25em;
+}
+
+:not(code)>.thx_mid_dot + .thx_clps_spc {
+	margin-left: -0.25em;
+}
+
+/* 括弧など */
+:not(code)>.thx_opening_mark,
+:not(code)>.thx_closing_mark {
+	font-feature-settings: "halt";
+}

@@ -1,0 +1,4 @@
+/* テキストの自動拡大 */
+body {
+	-webkit-text-size-adjust: 100%;
+}
