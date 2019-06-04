@@ -158,6 +158,12 @@ function thx_typesetting( $the_content ) {
 			( strpos( $tag, '<rt>' ) !== false )
 			||
 			( strpos( $tag, '<li' ) !== false )
+			||
+			( strpos( $tag, 'marker-' ) !== false )
+			||
+			( strpos( $tag, 'thx_pwid' ) !== false )
+			||
+			( strpos( $tag, 'thx_fwid' ) !== false )
 		) {
 			$skip_flag++;
 		}
