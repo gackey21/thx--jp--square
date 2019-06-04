@@ -149,7 +149,7 @@ function thx_typesetting( $the_content ) {
 				],
 				trim( $str )
 			);//$the_content .= preg_replace_callback_array()
-		}//else ( '</style>' === $tag )
+		}//if ( $skip_flag > 0 )
 		$the_content .= $tag;
 
 		$skip_tag = array(
