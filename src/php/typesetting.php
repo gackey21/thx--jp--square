@@ -152,20 +152,19 @@ function thx_typesetting( $the_content ) {
 		}//else ( '</style>' === $tag )
 		$the_content .= $tag;
 
-		if (
-			( strpos( $tag, '<style ' ) !== false )
-			||
-			( strpos( $tag, '<rt>' ) !== false )
-			||
-			( strpos( $tag, '<li' ) !== false )
-			||
-			( strpos( $tag, 'marker-' ) !== false )
-			||
-			( strpos( $tag, 'thx_pwid' ) !== false )
-			||
-			( strpos( $tag, 'thx_fwid' ) !== false )
-		) {
-			$skip_flag++;
+		$skip_tag = array(
+			'thx_pwid',
+			'thx_fwid',
+			'<rt>',
+			'<li',
+			'<style ',
+			'marker-',
+		);
+		foreach ( $skip_tag as $value ) {
+			if ( strpos( $tag, $value ) !== false ) {
+				$skip_flag++;
+				break;
+			}
 		}
 	}//foreach ( $pairing as $value )
 
