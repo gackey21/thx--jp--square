@@ -205,6 +205,14 @@ function thx_typesetting( $the_content ) {
 				'#uis' => function ( $match ) {
 					return $match[2] . $match[3];
 				},
+				//タグを跨いだ和欧間スペースを削除
+				'#' .
+					'(<span class = "thx_wao_spc"> </span>)' .
+					'(<[^>]*>)' .
+					'(<span class = "thx_wao_spc"> </span>)' .
+				'#uis' => function ( $match ) {
+					return $match[2];
+				},
 			],
 			$the_content
 		);
