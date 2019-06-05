@@ -35,11 +35,11 @@ function thx_typesetting( $the_content ) {
 						'[ !-;=-~\p{Ll}]+' .
 					'#uis' => function ( $match ) {
 						return
-							'<span class = "thx_wao_spc"> </span>' .
-							'<span class = "thx_pwid">' .
+							'<span class="thx_wao_spc"> </span>' .
+							'<span class="thx_pwid">' .
 								$match[0] .
 							'</span>' .
-							'<span class = "thx_wao_spc"> </span>';
+							'<span class="thx_wao_spc"> </span>';
 					},
 					//句読点と終わり括弧の検索（後端単数の句読点のみ、ぶら下がり）
 					'#' .
@@ -66,36 +66,36 @@ function thx_typesetting( $the_content ) {
 								( mb_substr( $match[1], -1, 1 ) !== mb_substr( $match[1], -2, 1 ) )
 							) {
 								return
-									'<span class = "thx_closing_mark">' .
+									'<span class="thx_closing_mark">' .
 										mb_substr( $match[1], 0, -1 ) .
 									'</span>' .
-									'<span class = "thx_punc_wrap">' .
-										'<span class = "thx_punctuation">' .
+									'<span class="thx_punc_wrap">' .
+										'<span class="thx_punctuation">' .
 											mb_substr( $match[1], -1 ) .
 										'</span>' .
 									'</span>' .
-									'<span class = "thx_clps_spc"> </span>';
+									'<span class="thx_clps_spc"> </span>';
 							} else { //ぶら下がり不要
 								return
-									'<span class = "thx_closing_mark">' .
+									'<span class="thx_closing_mark">' .
 										$match[1] .
 									'</span>' .
-									'<span class = "thx_clps_spc"> </span>';
+									'<span class="thx_clps_spc"> </span>';
 							}
 						} elseif ( $match[2] ) { //句読点が１文字のみは、ぶら下がり
 							return
-								'<span class = "thx_punc_wrap">' .
-									'<span class = "thx_punctuation">' .
+								'<span class="thx_punc_wrap">' .
+									'<span class="thx_punctuation">' .
 										$match[2] .
 									'</span>' .
 								'</span>' .
-								'<span class = "thx_clps_spc"> </span>';
+								'<span class="thx_clps_spc"> </span>';
 						} else { //ぶら下がり不要
 							return
-							'<span class = "thx_closing_mark">' .
+							'<span class="thx_closing_mark">' .
 								$match[3] .
 							'</span>' .
-							'<span class = "thx_clps_spc"> </span>';
+							'<span class="thx_clps_spc"> </span>';
 						}
 					},
 					//中点の検索
@@ -103,32 +103,32 @@ function thx_typesetting( $the_content ) {
 						'[・：；]+' .
 					'#uis' => function ( $match ) {
 						return
-							'<span class = "thx_clps_spc"> </span>' .
-							'<span class = "thx_mid_dot">' .
+							'<span class="thx_clps_spc"> </span>' .
+							'<span class="thx_mid_dot">' .
 								$match[0] .
 							'</span>' .
-							'<span class = "thx_clps_spc"> </span>';
+							'<span class="thx_clps_spc"> </span>';
 					},
 					//始め括弧の検索
 					'#' .
 						'[‘“（〔［｛〈《「『【]+' .
 					'#uis' => function ( $match ) {
 						return
-							'<span class = "thx_clps_spc"> </span>' .
-							'<span class = "thx_opening_mark">' .
+							'<span class="thx_clps_spc"> </span>' .
+							'<span class="thx_opening_mark">' .
 								$match[0] .
 							'</span>';
 					},
 					//括弧内の和欧間スペースを除去（禁則対策）
 					'#' .
-						'(<span class = "thx_opening_mark">[‘“（〔［｛〈《「『【]+</span>)' .
-						'(<span class = "thx_wao_spc"> </span>)' .
+						'(<span class="thx_opening_mark">[‘“（〔［｛〈《「『【]+</span>)' .
+						'(<span class="thx_wao_spc"> </span>)' .
 					'#uis' => function ( $match ) {
 						return $match[1];
 					},
 					'#' .
-						'(<span class = "thx_wao_spc"> </span>)' .
-						'(<span class = "thx_closing_mark">[、。，．’”）〕］｝〉》」』】]+</span>)' .
+						'(<span class="thx_wao_spc"> </span>)' .
+						'(<span class="thx_closing_mark">[、。，．’”）〕］｝〉》」』】]+</span>)' .
 					'#uis' => function ( $match ) {
 						return $match[2];
 					},
@@ -138,13 +138,13 @@ function thx_typesetting( $the_content ) {
 						'|' .
 						'[^ \r\n!-~\p{Ll}\x{200b}、。，．・：；‘“（〔［｛〈《「『【’”）〕］｝〉》」』】]+' .
 					'#uis' => function ( $match ) {
-						return '<span class = "thx_fwid">' . $match[0] . '</span>';
+						return '<span class="thx_fwid">' . $match[0] . '</span>';
 					},
 					//ゼロスペース処理
 					'#' .
 						'[\x{200b}]+' .
 					'#uis' => function ( $match ) {
-						return '<span class = "thx_zero_spc">' . $match[0] . '</span>';
+						return '<span class="thx_zero_spc">' . $match[0] . '</span>';
 					},
 				],
 				$str
@@ -170,8 +170,8 @@ function thx_typesetting( $the_content ) {
 	//重複するthx_clps_spcを削除
 	$the_content
 		= str_replace(
-			'<span class = "thx_clps_spc"> </span><span class = "thx_clps_spc"> </span>',
-			'<span class = "thx_clps_spc"> </span>',
+			'<span class="thx_clps_spc"> </span><span class="thx_clps_spc"> </span>',
+			'<span class="thx_clps_spc"> </span>',
 			$the_content
 		);
 
@@ -179,10 +179,10 @@ function thx_typesetting( $the_content ) {
 	$the_content
 		= str_replace(
 			array(
-				'<span class = "thx_clps_spc"> </span><span class = "thx_wao_spc"> </span>',
-				'<span class = "thx_wao_spc"> </span><span class = "thx_clps_spc"> </span>',
+				'<span class="thx_clps_spc"> </span><span class="thx_wao_spc"> </span>',
+				'<span class="thx_wao_spc"> </span><span class="thx_clps_spc"> </span>',
 			),
-			'<span class = "thx_clps_spc"> </span>',
+			'<span class="thx_clps_spc"> </span>',
 			$the_content
 		);
 
@@ -192,31 +192,31 @@ function thx_typesetting( $the_content ) {
 			[
 				//括弧内の<a>などを禁則対策
 				'#' .
-					'(<span class = "thx_opening_mark">[‘“（〔［｛〈《「『【]+</span>)' .
+					'(<span class="thx_opening_mark">[‘“（〔［｛〈《「『【]+</span>)' .
 					'(<[^>]*>)' .
-					'(<span class = "thx_wao_spc"> </span>)' .
+					'(<span class="thx_wao_spc"> </span>)' .
 				'#uis' => function ( $match ) {
 					return $match[1] . $match[2];
 				},
 				'#' .
-					'(<span class = "thx_wao_spc"> </span>)' .
+					'(<span class="thx_wao_spc"> </span>)' .
 					'(<[^>]*>)' .
-					'(<span class = "thx_closing_mark">[、。，．’”）〕］｝〉》」』】]+</span>)' .
+					'(<span class="thx_closing_mark">[、。，．’”）〕］｝〉》」』】]+</span>)' .
 				'#uis' => function ( $match ) {
 					return $match[2] . $match[3];
 				},
 				//タグを跨いだ和欧間スペースを削除
 				'#' .
-					'(<span class = "thx_wao_spc"> </span>)' .
+					'(<span class="thx_wao_spc"> </span>)' .
 					'(<[^>]*>)' .
-					'(<span class = "thx_wao_spc"> </span>)' .
+					'(<span class="thx_wao_spc"> </span>)' .
 				'#uis' => function ( $match ) {
 					return $match[2];
 				},
 				//（手動追加などによる）thx_pwidに挟まれた和欧間スペースを削除
 				'#' .
 					'(<span[^>]*thx_pwid[^>]*>[^>]*</span>)' .
-					'(<span class = "thx_wao_spc"> </span>)' .
+					'(<span class="thx_wao_spc"> </span>)' .
 					'(<span[^>]*thx_pwid[^>]*>[^>]*</span>)' .
 				'#uis' => function ( $match ) {
 					return $match[1] . $match[3];
