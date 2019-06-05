@@ -186,10 +186,11 @@ function thx_typesetting( $the_content ) {
 			$the_content
 		);
 
-	//括弧内の<a>などを禁則対策
+	//結合後の正規表現置換
 	$the_content
 		= preg_replace_callback_array(
 			[
+				//括弧内の<a>などを禁則対策
 				'#' .
 					'(<span class = "thx_opening_mark">[‘“（〔［｛〈《「『【]+</span>)' .
 					'(<[^>]*>)' .
