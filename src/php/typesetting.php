@@ -158,7 +158,6 @@ function thx_typesetting( $the_content ) {
 			'<rt>',
 			'<li',
 			'<style ',
-			'marker-',
 		);
 		foreach ( $skip_tag as $value ) {
 			if ( strpos( $tag, $value ) !== false ) {
