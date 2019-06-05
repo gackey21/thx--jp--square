@@ -134,9 +134,9 @@ function thx_typesetting( $the_content ) {
 					},
 					//欧文と役物以外を全角処理に
 					'#' .
-						'[^ !-~\p{Ll}、。，．・：；‘“（〔［｛〈《「『【’”）〕］｝〉》」』】]{2,}' .
+						'[^ \r\n!-~\p{Ll}、。，．・：；‘“（〔［｛〈《「『【’”）〕］｝〉》」』】]{2,}' .
 						'|' .
-						'[^ !-~\p{Ll}\x{200b}、。，．・：；‘“（〔［｛〈《「『【’”）〕］｝〉》」』】]+' .
+						'[^ \r\n!-~\p{Ll}\x{200b}、。，．・：；‘“（〔［｛〈《「『【’”）〕］｝〉》」』】]+' .
 					'#uis' => function ( $match ) {
 						return '<span class = "thx_fwid">' . $match[0] . '</span>';
 					},
@@ -147,7 +147,7 @@ function thx_typesetting( $the_content ) {
 						return '<span class = "thx_zero_spc">' . $match[0] . '</span>';
 					},
 				],
-				trim( $str )
+				$str
 			);//$the_content .= preg_replace_callback_array()
 		}//if ( $skip_flag > 0 )
 		$the_content .= $tag;
