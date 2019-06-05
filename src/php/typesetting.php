@@ -213,6 +213,14 @@ function thx_typesetting( $the_content ) {
 				'#uis' => function ( $match ) {
 					return $match[2];
 				},
+				//（手動追加などによる）thx_pwidに挟まれた和欧間スペースを削除
+				'#' .
+					'(<span[^>]*thx_pwid.*?>[^>]*</span>)' .
+					'(<span class = "thx_wao_spc"> </span>)' .
+					'(<span[^>]*thx_pwid.*?>[^>]*</span>)' .
+				'#uis' => function ( $match ) {
+					return $match[1] . $match[3];
+				},
 			],
 			$the_content
 		);
