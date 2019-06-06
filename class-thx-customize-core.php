@@ -121,6 +121,15 @@ if ( ! class_exists( 'Thx_Customize_Core' ) ) {
 			return $links;
 		}
 
+		//thx.jpのリソースディレクトリ
+		public static function get_resources_path() {
+			$dir = WP_CONTENT_DIR . '/uploads/thx-jp-resources/';
+			if ( ! file_exists( $dir ) ) {
+				mkdir( $dir, 0777, true );
+			}
+			return $dir;
+		}
+
 		//ファイル読み込み
 		public static function file_to_str( $path ) {
 			require_once( ABSPATH . 'wp-admin/includes/file.php' );
