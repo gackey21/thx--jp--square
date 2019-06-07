@@ -14,6 +14,11 @@ body {
 	font-feature-settings: "pwid";
 }
 
+/* 半角送り化 */
+.thx_halt {
+	font-feature-settings: "halt";
+}
+
 /* ゼロ幅スペース（&#x200b;、\x{200b}） */
 .thx_zero_spc {
 	-webkit-user-select: none;
@@ -114,15 +119,15 @@ code .thx_punc_wrap .thx_punctuation {
 
 /* 中黒 */
 :not(code)>.thx_mid_dot {
-	font-feature-settings: "halt";
+	/* font-feature-settings: "halt"; */
 }
 
 :not(code)>.thx_clps_spc + .thx_mid_dot {
-	margin-left: -0.25em;
+	/* margin-left: -0.25em; */
 }
 
 :not(code)>.thx_mid_dot + .thx_clps_spc {
-	margin-left: -0.25em;
+	/* margin-left: -0.25em; */
 }
 
 /* 括弧など */

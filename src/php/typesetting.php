@@ -100,14 +100,23 @@ function thx_typesetting( $the_content ) {
 					},
 					//中点の検索
 					'#' .
-						'[・：；]+' .
+						'([・：；]{2,})' .
+						'|' .
+						'([・：；])' .
 					'#uis' => function ( $match ) {
-						return
+						if ( $match[1] ) {
+							return
 							'<span class="thx_clps_spc"> </span>' .
-							'<span class="thx_mid_dot">' .
-								$match[0] .
+							'<span class="thx_mid_dot thx_halt">' .
+								$match[1] .
 							'</span>' .
 							'<span class="thx_clps_spc"> </span>';
+						} else {
+							return
+							'<span class="thx_mid_dot thx_fwid">' .
+								$match[2] .
+							'</span>';
+						}
 					},
 					//始め括弧の検索
 					'#' .
@@ -210,6 +219,14 @@ function thx_typesetting( $the_content ) {
 					'(<span class="thx_wao_spc"> </span>)' .
 					'(<[^>]*>)' .
 					'(<span class="thx_wao_spc"> </span>)' .
+				'#uis' => function ( $match ) {
+					return $match[2];
+				},
+				//全角中点前後のスペースを削除
+				'#' .
+					'(<span class="thx_(?:clps|wao)_spc"> </span>)' .
+					'(<span class="thx_mid_dot thx_fwid">[・：；]</span>)' .
+					'(<span class="thx_(?:clps|wao)_spc"> </span>)' .
 				'#uis' => function ( $match ) {
 					return $match[2];
 				},
