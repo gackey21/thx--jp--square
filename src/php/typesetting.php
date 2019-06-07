@@ -30,9 +30,9 @@ function thx_typesetting( $the_content ) {
 				[
 					//欧文の検索（ゼロスペースを含む場合は２文字以上）
 					'#' .
-						'[ !-;=-~\p{Ll}\x{200b}]{2,}' .
+						'[ !-;=-~\p{Ll}\p{No}\p{S}\x{200b}]{2,}' .
 						'|' .
-						'[ !-;=-~\p{Ll}]+' .
+						'[ !-;=-~\p{Ll}\p{No}\p{S}]+' .
 					'#uis' => function ( $match ) {
 						return
 							'<span class="thx_wao_spc"> </span>' .
@@ -143,9 +143,9 @@ function thx_typesetting( $the_content ) {
 					},
 					//欧文と役物以外を全角処理に
 					'#' .
-						'[^ \r\n!-~\p{Ll}、。，．・：；‘“（〔［｛〈《「『【’”）〕］｝〉》」』】]{2,}' .
+						'[^ \r\n!-~\p{Ll}\p{No}\p{S}、。，．・：；‘“（〔［｛〈《「『【’”）〕］｝〉》」』】]{2,}' .
 						'|' .
-						'[^ \r\n!-~\p{Ll}\x{200b}、。，．・：；‘“（〔［｛〈《「『【’”）〕］｝〉》」』】]+' .
+						'[^ \r\n!-~\p{Ll}\p{No}\p{S}\x{200b}、。，．・：；‘“（〔［｛〈《「『【’”）〕］｝〉》」』】]+' .
 					'#uis' => function ( $match ) {
 						return '<span class="thx_fwid">' . $match[0] . '</span>';
 					},
