@@ -106,15 +106,15 @@ code .thx_punc_wrap .thx_punctuation {
 }
 
 .chrome .thx_punctuation {
-	bottom: -0.1em;
+	bottom: -0.12em;
 }
 
 .gecko .thx_punctuation {
-	bottom: -0.15em;
+	bottom: -0.12em;
 }
 
 .safari .thx_punctuation {
-	bottom: -0.15em;
+	bottom: calc(-0.12em - 1px);
 }
 
 /* 中黒 */
