@@ -71,6 +71,7 @@ if ( ! class_exists( 'Thx_Customize_Core' ) ) {
 				self::$push_css_url[] = $src_css_url . 'thx-typesetting.css';
 				add_filter( 'the_content', 'thx_typesetting', 21000 );
 				add_filter( 'the_category_content', 'thx_typesetting', 21000 );
+				add_filter( 'widget_text', 'thx_typesetting', 21000 );
 			}
 
 			//行間の崩れないルビ
