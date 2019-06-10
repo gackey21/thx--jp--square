@@ -42,21 +42,23 @@ code .thx_wao_spc {
 .thx_clps_spc {
 	-webkit-user-select: none;
 	user-select: none;
+	font-family: Kosugi;
+	line-height: 0;
 }
 
 .chrome .thx_clps_spc {
-	font-family: sans-serif;
-	font-feature-settings: "hwid";
+	/* font-family: sans-serif; */
+	/* font-feature-settings: "hwid"; */
 }
 
 .gecko .thx_clps_spc {
-	font-family: Kosugi;
-	line-height: 0;
+	/* font-family: Kosugi; */
+	/* line-height: 0; */
 }
 
 .safari .thx_clps_spc {
-	font-family: Kosugi;
-	line-height: 0;
+	/* font-family: Kosugi; */
+	/* line-height: 0; */
 }
 
 body.amp .thx_clps_spc {
@@ -81,22 +83,28 @@ code .thx_clps_spc {
 	font-feature-settings: "halt";
 }
 
+.thx_punc_wrap + .thx_clps_spc {
+	font-size: 2em;
+}
+
 .chrome .thx_punc_wrap + .thx_clps_spc {
-	font-feature-settings: "fwid";
+	/* font-size: 1em; */
+	/* font-feature-settings: "fwid"; */
 }
 
 .gecko .thx_punc_wrap + .thx_clps_spc {
-	font-size: 2em;
+	/* font-size: 2em; */
 }
 
 .safari .thx_punc_wrap + .thx_clps_spc {
-	font-size: 2em;
+	/* font-size: 2em; */
 }
 
 .thx_punctuation {
 	position: absolute;
 	font-feature-settings: "halt";
 	line-height: 1em;
+	bottom: -0.12em;
 }
 
 code .thx_punc_wrap .thx_punctuation {
@@ -106,11 +114,11 @@ code .thx_punc_wrap .thx_punctuation {
 }
 
 .chrome .thx_punctuation {
-	bottom: -0.12em;
+	/* bottom: -0.12em; */
 }
 
 .gecko .thx_punctuation {
-	bottom: -0.12em;
+	/* bottom: -0.12em; */
 }
 
 .safari .thx_punctuation {
