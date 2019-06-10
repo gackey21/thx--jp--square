@@ -1,7 +1,7 @@
 /* ルビ */
 jQuery(window).on('load', function() {
-	//chrome・safariの場合
-	if (jQuery('body').hasClass('chrome')||jQuery('body').hasClass('safari')) {
+	//Firefox以外の場合
+	if (!jQuery('body').hasClass('gecko')) {
 		jQuery('ruby').each(function() {
 
 			// <rt>を非表示にした状態でouterWidthを取得
@@ -61,5 +61,5 @@ jQuery(window).on('load', function() {
 		jQuery('rt').each(function() {
 			jQuery(this).html('');
 		});
-	}//if (jQuery('body').hasClass('chrome')||jQuery('body').hasClass('safari'))
+	}//if (!jQuery('body').hasClass('gecko'))
 });
