@@ -213,28 +213,30 @@ if ( ! class_exists( 'Thx_Customize_Core' ) ) {
 
 		//ブラウザ判別
 		function browser_body_class( $classes ) {
-			global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
-
-			if ( $is_lynx ) {
-				$classes[] = 'lynx';
-			} elseif ( $is_gecko ) {
-				$classes[] = 'gecko';
-			} elseif ( $is_opera ) {
-				$classes[] = 'opera';
-			} elseif ( $is_NS4 ) {
-				$classes[] = 'ns4';
-			} elseif ( $is_safari ) {
-				$classes[] = 'safari';
-			} elseif ( $is_chrome ) {
-				$classes[] = 'chrome';
-			} elseif ( $is_IE ) {
-				$classes[] = 'ie';
-			} else {
-				$classes[] = 'unknown';
-			}
+			global  $is_iphone, // iPhone Safari
+							$is_chrome, // Google Chrome
+							$is_safari, // Safari
+							$is_opera,  // Opera
+							$is_gecko,  // FireFox
+							$is_IE,     // Internet Explorer
+							$is_edge;   // Microsoft Edge
 
 			if ( $is_iphone ) {
 				$classes[] = 'iphone';
+			} elseif ( $is_chrome ) {
+				$classes[] = 'chrome';
+			} elseif ( $is_safari ) {
+				$classes[] = 'safari';
+			} elseif ( $is_opera ) {
+				$classes[] = 'opera';
+			} elseif ( $is_gecko ) {
+				$classes[] = 'gecko';
+			} elseif ( $is_IE ) {
+				$classes[] = 'ie';
+			} elseif ( $is_edge ) {
+				$classes[] = 'edge';
+			} else {
+				$classes[] = 'unknown_browser';
 			}
 			return $classes;
 		}//browser_body_class( $classes )
