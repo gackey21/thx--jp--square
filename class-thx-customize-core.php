@@ -3,7 +3,7 @@
 Plugin Name: thx.jp²
 Plugin URI:
 Description: thx.jp² means 'Typesetting with Half-width-space eXtra in Japanese' ; made by thx.jp/
-Version: 0.4.5
+Version: 0.4.6
 Author:Gackey.21
 Author URI: https://thx.jp
 License: GPL2
@@ -38,10 +38,18 @@ if ( ! class_exists( 'Thx_Customize_Core' ) ) {
 		static $push_js_url  = array();
 		static $push_css_url = array();
 
+		//thx.jpのリソースディレクトリ
+		const RESOURCES_PATH = WP_CONTENT_DIR . '/uploads/thx-jp-resources/';
+
 		public function __construct() {
 			$thx_cc_option = get_option( 'thx_cc_option' );
 			$src_css_url   = plugins_url( 'src/css/', __FILE__ );
 			$src_js_url    = plugins_url( 'src/js/', __FILE__ );
+
+			//thx.jpのリソースディレクトリが無ければ作成
+			if ( ! file_exists( self::RESOURCES_PATH ) ) {
+				mkdir( self::RESOURCES_PATH, 0777, true );
+			}
 
 			//管理画面の設定
 			add_action( '_admin_menu', 'thx_admin_menu' );
@@ -120,15 +128,6 @@ if ( ! class_exists( 'Thx_Customize_Core' ) ) {
 			$add_link = '<a href="admin.php?page=thx-jp-customize-core">設定</a>';
 			array_unshift( $links, $add_link );
 			return $links;
-		}
-
-		//thx.jpのリソースディレクトリ
-		public static function get_resources_path() {
-			$dir = WP_CONTENT_DIR . '/uploads/thx-jp-resources/';
-			if ( ! file_exists( $dir ) ) {
-				mkdir( $dir, 0777, true );
-			}
-			return $dir;
 		}
 
 		//ファイル読み込み
