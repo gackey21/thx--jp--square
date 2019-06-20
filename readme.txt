@@ -1,8 +1,8 @@
 === Plugin Name ===
 Donate link: https://thx.jp/
 Requires at least: 5.0
-Tested up to: 5.2.1
-Stable tag: 0.4.4
+Tested up to: 5.2.2
+Stable tag: 0.4.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,6 +12,9 @@ thx.jp² means 'Typesetting with Half-width-space eXtra in Japanese' ; made by t
 
 
 == Changelog ==
+
+= 0.4.5 =
+* enqueue ハンドル名の取得方変更
 
 = 0.4.4 =
 * ブラウザ別スタイルの汎用化（仮）
