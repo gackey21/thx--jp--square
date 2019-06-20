@@ -162,20 +162,16 @@ if ( ! class_exists( 'Thx_Customize_Core' ) ) {
 
 		//cssファイルをキューイング
 		public static function enqueue_file_style( $css_url ) {
-			// cssのurlからファイル名のみ取り出す
-			$css_name = preg_replace( '{.*\/}uis', '', $css_url );
-			// cssのファイル名から拡張子を除去
-			$css_name = preg_replace( '{\..*}uis', '', $css_name );
+			// cssのurlからハンドル名を作成
+			$css_name = basename( $css_url, '.css' );
 			//キュー
 			wp_enqueue_style( $css_name, $css_url );
 		}//enqueue_file_style()
 
 		//jsファイルをキューイング
 		public static function enqueue_file_script( $js_url ) {
-			// jsのurlからファイル名のみ取り出す
-			$js_name = preg_replace( '{.*\/}uis', '', $js_url );
-			// jsのファイル名から拡張子を除去
-			$js_name = preg_replace( '{\..*}uis', '', $js_name );
+			// jsのurlからハンドル名を作成
+			$js_name = basename( $js_url, '.js' );
 			//キュー
 			wp_enqueue_script( $js_name, $js_url, array( 'jquery' ), false, true );
 		}//enqueue_file_script()
