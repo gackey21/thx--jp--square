@@ -222,6 +222,14 @@ function thx_typesetting( $the_content ) {
 				'#uis' => function ( $match ) {
 					return $match[2];
 				},
+				//不要なスペースに付加されるタグを削除
+				'#' .
+					'<span class="thx_wao_spc"> </span>' .
+					'<span class="thx_pwid">([\p{Zs}]+)</span>' .
+					'<span class="thx_wao_spc"> </span>' .
+				'#uis' => function ( $match ) {
+					return $match[1];
+				},
 				//全角中点前後のスペースを削除
 				'#' .
 					'(<span class="thx_(?:clps|wao)_spc"> </span>)' .
