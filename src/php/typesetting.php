@@ -4,9 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 //半角スペース用にKosugiをエンキュー
 function enqueue_kosugi_space() {
-	wp_enqueue_style( 'google-webfont-style', '//fonts.googleapis.com/css?family=Kosugi&text=_ 　' );
+	wp_enqueue_style( 'google-webfont-Kosugi', '//fonts.googleapis.com/css?family=Kosugi&text=_ 　' );
 }
-add_action( 'wp_enqueue_scripts', 'enqueue_kosugi_space' );
+add_action( 'wp_footer', 'enqueue_kosugi_space' );
 
 //簡易的な日本語組版
 function thx_typesetting( $the_content ) {
