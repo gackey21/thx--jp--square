@@ -19,6 +19,12 @@ body {
 	font-feature-settings: "halt";
 }
 
+/* 小仮名化 */
+.thx_kana {
+	/* font-size: 0.96em; */
+	/* letter-spacing: 0.0566em; */
+}
+
 /* ゼロ幅スペース（&#x200b;、\x{200b}） */
 .thx_zero_spc {
 	-webkit-user-select: none;

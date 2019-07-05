@@ -149,6 +149,14 @@ function thx_typesetting( $the_content ) {
 					'#uis' => function ( $match ) {
 						return '<span class="thx_fwid">' . $match[0] . '</span>';
 					},
+					// //かなを選択
+					// '#' .
+					// 	'[\p{Hiragana}\p{Katakana}\x{200b}]{2,}' .
+					// 	'|' .
+					// 	'[\p{Hiragana}\p{Katakana}]+' .
+					// '#uis' => function ( $match ) {
+					// 	return '<span class="thx_kana">' . $match[0] . '</span>';
+					// },
 					//ゼロスペース処理
 					'#' .
 						'[\x{200b}]+' .
