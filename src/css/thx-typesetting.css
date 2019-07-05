@@ -14,6 +14,11 @@ body {
 	font-feature-settings: "pwid";
 }
 
+/* 半角化 */
+.thx_hwid {
+	font-feature-settings: "hwid";
+}
+
 /* 半角送り化 */
 .thx_halt {
 	font-feature-settings: "halt";
