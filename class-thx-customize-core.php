@@ -3,7 +3,7 @@
 Plugin Name: thx.jp²
 Plugin URI:
 Description: thx.jp² means 'Typesetting with Half-width-space eXtra in Japanese' ; made by thx.jp/
-Version: 0.4.7
+Version: 0.4.8
 Author:Gackey.21
 Author URI: https://thx.jp
 License: GPL2
